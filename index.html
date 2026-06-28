@@ -390,311 +390,72 @@
       color: var(--gold2);
       letter-spacing: .06em;
     }
-	
-	/* ── Conference Analysis Table ── */
-.analysis-section {
+
+		/* ── Rules Page ── */
+.rules-section {
   position: relative;
   background:
     radial-gradient(ellipse 80% 60% at 60% 20%, rgba(22,37,68,.9) 0%, rgba(11,22,40,1) 72%);
   overflow: hidden;
 }
 
-.analysis-toolbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.analysis-search {
-  width: 100%;
-  min-width: 320px;
-  max-width: 460px;
-  background: rgba(22,37,68,0.7);
-  border: 1px solid rgba(201,168,76,.3);
-  border-radius: 3px;
-  padding: .9rem 1.1rem;
-  color: var(--white);
-  font-size: .95rem;
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
-}
-
-.analysis-search:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201,168,76,.08);
-}
-
-.analysis-search::placeholder {
-  color: var(--muted);
-}
-
-.analysis-count {
-  color: var(--muted);
-  font-size: .76rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  padding-bottom: .95rem;
-}
-
-.analysis-table-wrap {
-  overflow-x: auto;
+.rules-card {
   background: rgba(22,37,68,0.62);
   border: 1px solid var(--border);
   border-radius: 4px;
   box-shadow: 0 24px 70px rgba(0,0,0,.24);
+  padding: clamp(1.4rem, 3vw, 2.5rem);
 }
 
-.analysis-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 860px;
+.rule-item {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(201,168,76,.14);
 }
 
-.analysis-table th {
-  background: rgba(15,30,56,.95);
-  color: var(--gold2);
-  font-size: .72rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  font-weight: 600;
-  padding: 1rem 1.1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
+.rule-item:first-child {
+  padding-top: 0;
 }
 
-.analysis-table td {
-  color: #C8D4E0;
-  font-size: .9rem;
-  line-height: 1.55;
-  padding: 1.05rem 1.1rem;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  vertical-align: top;
-}
-
-.analysis-table tbody tr {
-  transition: background .2s;
-}
-
-.analysis-table tbody tr:hover {
-  background: rgba(201,168,76,.045);
-}
-
-.analysis-table tbody tr:last-child td {
+.rule-item:last-child {
   border-bottom: none;
+  padding-bottom: 0;
 }
 
-.analysis-table td:nth-child(1) {
-  color: var(--white);
-  font-weight: 600;
-}
-
-.analysis-table td:nth-child(2) {
+.rule-item h2 {
+  font-family: 'Playfair Display', Georgia, serif;
   color: var(--gold2);
-  font-family: 'Roboto Mono', monospace;
-  font-size: .82rem;
-  white-space: nowrap;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  line-height: 1.25;
+  margin-bottom: .75rem;
 }
 
-.analysis-loading {
-  text-align: center;
-  color: var(--muted) !important;
-  padding: 2rem !important;
-}
-
-.analysis-read-btn {
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,.45);
-  border-radius: 3px;
-  padding: .55rem .9rem;
-  font-size: .76rem;
-  font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s, transform .15s;
-  font-family: 'Inter', sans-serif;
-  white-space: nowrap;
-}
-
-.analysis-read-btn:hover {
-  background: rgba(201,168,76,.12);
-  color: var(--gold2);
-  border-color: rgba(201,168,76,.7);
-  transform: translateY(-1px);
-}
-
-.analysis-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: .6rem;
-  margin-top: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.analysis-page-btn {
-  background: rgba(22,37,68,0.7);
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,.35);
-  border-radius: 3px;
-  padding: .55rem .85rem;
-  font-size: .76rem;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background .2s, color .2s, border-color .2s;
-  font-family: 'Inter', sans-serif;
-}
-
-.analysis-page-btn:hover:not(:disabled) {
-  background: rgba(201,168,76,.12);
-  color: var(--gold2);
-  border-color: rgba(201,168,76,.65);
-}
-
-.analysis-page-btn:disabled {
-  opacity: .38;
-  cursor: not-allowed;
-}
-
-.analysis-page-info {
-  color: var(--muted);
-  font-size: .76rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: 0 .35rem;
-}
-
-/* Modal */
-.analysis-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(6,14,28,.82);
-  backdrop-filter: blur(8px);
-  z-index: 9999;
-  padding: 1.5rem;
-}
-
-.analysis-modal-content {
-  background:
-    linear-gradient(180deg, rgba(22,37,68,.98), rgba(11,22,40,.98));
-  border: 1px solid rgba(201,168,76,.25);
-  border-radius: 6px;
-  width: 100%;
-  max-width: 920px;
-  max-height: 86vh;
-  overflow-y: auto;
-  margin: 4vh auto;
-  padding: 2rem;
-  position: relative;
-  box-shadow: 0 30px 90px rgba(0,0,0,.45);
-}
-
-.analysis-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(201,168,76,.08);
-  border: 1px solid rgba(201,168,76,.25);
-  color: var(--gold2);
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1rem;
-  line-height: 1;
-  transition: background .2s, transform .15s;
-}
-
-.analysis-close:hover {
-  background: rgba(201,168,76,.16);
-  transform: rotate(90deg);
-}
-
-.analysis-modal-title {
-  color: var(--white);
-  font-size: clamp(1.6rem,3vw,2.4rem);
-  line-height: 1.15;
-  padding-right: 2.5rem;
-  margin-bottom: .85rem;
-}
-
-.analysis-modal-meta {
-  color: var(--muted);
-  font-size: .9rem;
-  margin-bottom: 1rem;
-}
-
-.analysis-modal-meta strong {
-  color: var(--gold2);
-}
-
-.analysis-modal-description {
-  color: #C8D4E0;
-  font-size: .94rem;
-  line-height: 1.7;
-}
-
-.analysis-article {
+.rule-item p {
   color: #C8D4E0;
   font-size: .94rem;
   line-height: 1.75;
+  margin-bottom: .85rem;
 }
 
-.analysis-article p {
-  margin: 0 0 1rem;
+.rule-item p:last-child {
+  margin-bottom: 0;
 }
 
-.analysis-article ul,
-.analysis-article ol {
-  margin: 0 0 1rem 1.25rem;
+.rule-item ul {
+  color: #C8D4E0;
+  font-size: .94rem;
+  line-height: 1.75;
+  margin-left: 1.25rem;
+  margin-top: .75rem;
 }
 
-.analysis-article li {
-  margin-bottom: .45rem;
+.rule-item li {
+  margin-bottom: .55rem;
 }
 
-.analysis-article strong {
-  display: block;
-  color: var(--gold2);
-  margin: 1.4rem 0 .55rem;
-  font-weight: 600;
+.rule-item li::marker {
+  color: var(--gold);
 }
-
-.analysis-article a {
-  color: var(--gold2);
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .analysis-toolbar {
-    display: block;
-  }
-
-  .analysis-search {
-    min-width: 0;
-    max-width: none;
-  }
-
-  .analysis-count {
-    margin-top: .8rem;
-    padding-bottom: 0;
-  }
-
-  .analysis-modal-content {
-    padding: 1.4rem;
-    margin: 2vh auto;
-    max-height: 90vh;
-  }
-}
-
+		
     @media (max-width: 640px) {
       .conf-grid { grid-template-columns: 1fr; }
     }
@@ -803,92 +564,119 @@
 </div>
 </nav>
 
-<!-- ═══════════════════════════ CONFERENCE ANALYSIS TABLE ═══════════════════════════ -->
-<section class="analysis-section pt-32 pb-24 px-6" id="conference-analysis">
+<!-- ═══════════════════════════ CONTEST RULES ═══════════════════════════ -->
+<section class="rules-section pt-32 pb-24 px-6" id="contest-rules">
   <div class="grid-overlay"></div>
 
-  <div class="max-w-7xl mx-auto relative">
+  <div class="max-w-5xl mx-auto relative">
 
     <div class="max-w-4xl mb-12 reveal">
-      <div class="section-label mb-4">Planet MicroCap 2026</div>
+      <div class="section-label mb-4">Contest Rules</div>
 
       <h1 class="display font-semibold mb-5"
           style="font-size:clamp(2.1rem,4.8vw,4rem);color:var(--white);line-height:1.1">
-        Conference Company Analysis
+        Fictional Stock Picking Contest Rules
       </h1>
 
-      <p style="color:var(--muted);font-size:.96rem;line-height:1.75;max-width:60ch">
-        Browse presenting companies from Planet MicroCap Las Vegas, search by company or ticker,
-        and read the full analysis for each name.
+      <p style="color:var(--muted);font-size:.96rem;line-height:1.75;max-width:66ch">
+        Review the official rules, eligibility requirements, scoring process, prize structure,
+        and participant responsibilities for the Fictional Stock Picking Contest 2026.
       </p>
     </div>
 
-    <div class="analysis-toolbar reveal">
-      <div>
-        <div class="mono text-xs mb-2" style="color:var(--gold);letter-spacing:.12em">
-          SEARCH DATABASE
-        </div>
+    <div class="rules-card reveal">
 
-        <input
-          type="text"
-          id="search"
-          class="analysis-search"
-          placeholder="Search company or ticker..."
-        >
+      <div class="rule-item">
+        <h2>1. Introduction</h2>
+        <p>The Fictional Stock Picking Contest 2026 is a virtual investment competition designed for educational and entertainment purposes. Participants compete by creating a simulated stock portfolio using virtual funds. No real money is invested, and all trading activity is hypothetical.</p>
       </div>
 
-      <div class="analysis-count mono" id="rowCount">
-        Loading companies...
+      <div class="rule-item">
+        <h2>2. Eligibility</h2>
+        <p>Participation is open to individuals who are at least eighteen (18) years of age at the time of registration. Each participant may register only one account. Duplicate registrations may result in disqualification.</p>
       </div>
+
+      <div class="rule-item">
+        <h2>3. Registration</h2>
+        <p>Registration opens on January 5, 2026, and closes on January 25, 2026. All participants must complete their registration before the deadline. Late registrations will not be accepted.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>4. Contest Period</h2>
+        <p>The contest begins on February 1, 2026, and concludes on July 31, 2026. Portfolio performance will be measured throughout this period.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>5. Starting Portfolio</h2>
+        <p>Each participant will receive a virtual portfolio valued at $100,000. The funds have no cash value and cannot be exchanged for real currency.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>6. Portfolio Requirements</h2>
+        <p>Participants must construct a portfolio consisting of exactly ten (10) stocks. The entire virtual balance must be allocated before the contest begins. No individual stock may represent more than twenty percent (20%) of the portfolio or less than five percent (5%).</p>
+        <p>Fractional shares are permitted.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>7. Portfolio Lock</h2>
+        <p>Once the contest officially begins, portfolios become locked. Participants may not buy, sell, replace, or rebalance any holdings during the contest period.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>8. Scoring</h2>
+        <p>Portfolio performance will be calculated based on the percentage increase or decrease in total portfolio value from the starting balance.</p>
+        <p>The participant with the highest overall portfolio return at the end of the contest will be declared the winner.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>9. Tie-Breaking Procedure</h2>
+        <p>If two or more participants achieve identical portfolio returns, the following tie-breakers will be applied in order:</p>
+        <ul>
+          <li>The portfolio with the lower overall volatility will rank higher.</li>
+          <li>If a tie still exists, the participant with the earlier registration date and time will rank higher.</li>
+          <li>If a tie remains after these criteria, the winner will be selected through a random draw conducted by the contest organizers.</li>
+        </ul>
+      </div>
+
+      <div class="rule-item">
+        <h2>10. Participant Conduct</h2>
+        <p>Participants are expected to compete fairly and honestly. The use of multiple accounts, automated systems, fraudulent activities, or any attempt to manipulate contest results is strictly prohibited.</p>
+        <p>The organizers reserve the right to investigate suspicious activity and disqualify participants who violate these rules.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>11. Results</h2>
+        <p>Official results will be announced within ten (10) days after the contest concludes. All calculations performed by the contest organizers are considered final.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>12. Prizes</h2>
+        <p>The first-place participant will receive a fictional grand prize of $5,000.</p>
+        <p>The second-place participant will receive a fictional prize of $2,500.</p>
+        <p>The third-place participant will receive a fictional prize of $1,000.</p>
+        <p>The remaining participants in the top ten will receive fictional certificates of achievement.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>13. Organizer Rights</h2>
+        <p>The organizers reserve the right to amend these rules, postpone contest dates, suspend participation, or cancel the contest if unforeseen circumstances affect the integrity of the competition.</p>
+        <p>Any significant changes will be announced before they become effective.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>14. Acceptance of Rules</h2>
+        <p>By registering for the contest, participants acknowledge that they have read, understood, and agreed to abide by all contest rules and decisions made by the organizers.</p>
+      </div>
+
+      <div class="rule-item">
+        <h2>15. Disclaimer</h2>
+        <p>This contest is entirely fictional and intended solely as an example of how a stock-picking competition could be organized. All names, dates, prizes, companies, and financial figures are invented for demonstration purposes only and do not represent any actual event or investment opportunity.</p>
+      </div>
+
     </div>
 
-    <div class="analysis-table-wrap reveal">
-      <table class="analysis-table">
-        <thead>
-          <tr>
-            <th>Company</th>
-            <th>Ticker</th>
-            <th>Description</th>
-            <th>Analysis</th>
-          </tr>
-        </thead>
-
-        <tbody id="tableBody">
-          <tr>
-            <td colspan="4" class="analysis-loading">
-              Loading conference data...
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="analysis-pagination reveal" id="pagination"></div>
-	
   </div>
-  
 </section>
-
-<!-- Analysis Modal -->
-<div class="analysis-modal" id="modal">
-  <div class="analysis-modal-content">
-    <button class="analysis-close" onclick="closeModal()" aria-label="Close modal">✕</button>
-
-    <div class="section-label mb-3">Company Analysis</div>
-
-    <h2 id="modalCompany" class="display analysis-modal-title"></h2>
-
-    <div class="analysis-modal-meta">
-      <strong>Ticker:</strong> <span id="modalTicker"></span>
-    </div>
-
-    <p id="modalDescription" class="analysis-modal-description"></p>
-
-    <hr class="rule-gold my-6">
-
-    <div id="articleText" class="analysis-article"></div>
-  </div>
-</div>
 
 <!-- ═══════════════════════════ SPONSORS ═══════════════════════════ -->
 <section class="py-20 px-6" style="background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
@@ -1008,206 +796,6 @@
 /* ── Hamburger ── */
 document.getElementById('hamburger').addEventListener('click', () => {
   document.getElementById('nav-mobile').classList.toggle('show');
-});
-
-/* ── Conference Analysis Table ── */
-const SHEET_ID = "1oBtTottj1sIndVvcR2eUz6il8lXzd0Rt1AZFtEIcie4";
-const SHEET_NAME = "Stocks";
-
-const sheetUrl =
-  `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${SHEET_NAME}`;
-
-let allRows = [];
-let filteredRows = [];
-let currentPage = 1;
-const rowsPerPage = 10;
-
-fetch(sheetUrl)
-  .then(res => res.text())
-  .then(text => {
-    const json = JSON.parse(
-      text.substring(47).slice(0, -2)
-    );
-
-    const rows = json.table.rows || [];
-
-    allRows = rows.map((r, index) => ({
-      id: r.c[0]?.v || index + 1,
-      company: r.c[1]?.v || "",
-      ticker: r.c[2]?.v || "",
-      description: r.c[3]?.v || "",
-      article: r.c[4]?.v || ""
-    }));
-
-    filteredRows = allRows;
-    currentPage = 1;
-    renderTable();
-  })
-  .catch(() => {
-    const tbody = document.getElementById("tableBody");
-
-    if (tbody) {
-      tbody.innerHTML = `
-        <tr>
-          <td colspan="4" class="analysis-loading">
-            Unable to load conference data. Please try again later.
-          </td>
-        </tr>
-      `;
-    }
-
-    updateRowCount(0);
-  });
-
-function renderTable() {
-  const tbody = document.getElementById("tableBody");
-
-  if (!tbody) return;
-
-  tbody.innerHTML = "";
-
-  if (!filteredRows.length) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="4" class="analysis-loading">
-          No companies found.
-        </td>
-      </tr>
-    `;
-
-    updateRowCount(0);
-    renderPagination();
-    return;
-  }
-
-  const start = (currentPage - 1) * rowsPerPage;
-  const end = start + rowsPerPage;
-  const pageRows = filteredRows.slice(start, end);
-
-  pageRows.forEach(row => {
-    const tr = document.createElement("tr");
-
-    tr.innerHTML = `
-      <td>${escapeHtml(row.company)}</td>
-      <td>${escapeHtml(row.ticker)}</td>
-      <td>${escapeHtml(row.description)}</td>
-      <td>
-        <button class="analysis-read-btn" onclick="openArticle('${String(row.id).replace(/'/g, "\\'")}')">
-          Read
-        </button>
-      </td>
-    `;
-
-    tbody.appendChild(tr);
-  });
-
-  updateRowCount(filteredRows.length);
-  renderPagination();
-}
-
-function openArticle(id) {
-  const row = allRows.find(x => String(x.id) === String(id));
-
-  if (!row) return;
-
-  document.getElementById("modalCompany").textContent = row.company;
-  document.getElementById("modalTicker").textContent = row.ticker;
-  document.getElementById("modalDescription").textContent = row.description;
-
-  document.getElementById("articleText").innerHTML = row.article || "<p>No analysis available yet.</p>";
-
-  document.getElementById("modal").style.display = "block";
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-  document.body.style.overflow = "";
-}
-
-function updateRowCount(count) {
-  const rowCount = document.getElementById("rowCount");
-
-  if (!rowCount) return;
-
-  rowCount.textContent = count === 1
-    ? "1 company loaded"
-    : `${count} companies loaded`;
-}
-
-function renderPagination() {
-  const pagination = document.getElementById("pagination");
-
-  if (!pagination) return;
-
-  const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
-
-  if (totalPages <= 1) {
-    pagination.innerHTML = "";
-    return;
-  }
-
-  pagination.innerHTML = `
-    <button class="analysis-page-btn" ${currentPage === 1 ? "disabled" : ""} onclick="goToPage(${currentPage - 1})">
-      Previous
-    </button>
-
-    <span class="analysis-page-info">
-      Page ${currentPage} of ${totalPages}
-    </span>
-
-    <button class="analysis-page-btn" ${currentPage === totalPages ? "disabled" : ""} onclick="goToPage(${currentPage + 1})">
-      Next
-    </button>
-  `;
-}
-
-function goToPage(page) {
-  const totalPages = Math.ceil(filteredRows.length / rowsPerPage);
-
-  if (page < 1 || page > totalPages) return;
-
-  currentPage = page;
-  renderTable();
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-const analysisSearch = document.getElementById("search");
-
-if (analysisSearch) {
-  analysisSearch.addEventListener("input", function () {
-    const q = this.value.toLowerCase().trim();
-
-    filteredRows = allRows.filter(row =>
-      row.company.toLowerCase().includes(q) ||
-      row.ticker.toLowerCase().includes(q)
-    );
-
-    currentPage = 1;
-    renderTable();
-  });
-}
-
-window.addEventListener("click", function(event) {
-  const modal = document.getElementById("modal");
-
-  if (event.target === modal) {
-    closeModal();
-  }
-});
-
-window.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    closeModal();
-  }
 });
 
 /* ── Scroll reveal ── */
